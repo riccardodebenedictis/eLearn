@@ -1,2 +1,4 @@
 /common-lib/target/
 /learn-server/target/
+/learn-server/learn_db/
+/learn-server/derby.log
