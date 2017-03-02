@@ -14,11 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package it.cnr.istc.learn.entities;
+package it.cnr.istc.learn.resources;
+
+import it.cnr.istc.learn.entities.User;
+import java.util.Collection;
 
 /**
  *
  * @author Riccardo De Benedictis <riccardo.debenedictis@istc.cnr.it>
  */
-public class User {
+public interface IUsers {
+
+    public Collection<User> getUsers();
 }

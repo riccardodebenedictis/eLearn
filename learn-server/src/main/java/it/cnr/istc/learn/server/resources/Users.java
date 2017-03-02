@@ -17,6 +17,7 @@
 package it.cnr.istc.learn.server.resources;
 
 import it.cnr.istc.learn.entities.User;
+import it.cnr.istc.learn.resources.IUsers;
 import it.cnr.istc.learn.server.db.UserEntity;
 import java.util.Collection;
 import java.util.Collections;
@@ -34,7 +35,7 @@ import javax.ws.rs.core.MediaType;
  * @author Riccardo De Benedictis <riccardo.debenedictis@istc.cnr.it>
  */
 @Path("users")
-public class Users {
+public class Users implements IUsers {
 
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("learn_db");
     private static final EntityManager em = emf.createEntityManager();
@@ -42,7 +43,8 @@ public class Users {
     @GET
     @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
-    public Collection<User> getAllUsers() {
+    @Override
+    public Collection<User> getUsers() {
         List<UserEntity> users = em.createQuery("SELECT u FROM UserEntity u", UserEntity.class).getResultList();
         return Collections.emptyList();
     }
