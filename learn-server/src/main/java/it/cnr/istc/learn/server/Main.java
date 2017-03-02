@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.core.UriBuilder;
+import org.apache.activemq.broker.BrokerService;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -41,6 +42,16 @@ public class Main {
         try {
             server.start();
         } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        BrokerService broker = new BrokerService();
+
+        try {
+            // configure the broker
+            broker.addConnector("mqtt://localhost:1883");
+            broker.start();
+        } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

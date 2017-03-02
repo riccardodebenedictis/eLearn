@@ -2,3 +2,4 @@
 /learn-server/target/
 /learn-server/learn_db/
 /learn-server/derby.log
+/learn-server/activemq-data/
